@@ -1,21 +1,33 @@
 class roca {
-  int s;
-  float xPos,yPos;
-  roca (int sz,float x ,float y) { 
-    s = sz;
-    xPos = x;
-    yPos = y;
+  int size;
+  float xPos, yPos;
+  roca () {
   } 
-  void update() { 
+  void update(float speed) { 
     fill(255);
-    ellipse( xPos, yPos, s, s);
-  }
-  void setSize(int sz) { 
-    s = sz;
+    ellipse( xPos, yPos, size, size);
+    yPos +=speed;
+    println(yPos);
   }
 
-  void setPos(int x, int y) { 
+  void setSize(int sz) { 
+    size = sz;
+  }
+
+  void setPos(float x, float y) { 
     xPos = x;
     yPos = y;
+  }
+
+  void reset(float pX, float pY) {
+    size = int(random(10, 60));
+    pX = random(0, width);
+    pY =  - size;
+    xPos = pX;
+    yPos = pY;
+  }
+
+  float getY() {
+    return yPos;
   }
 } 
